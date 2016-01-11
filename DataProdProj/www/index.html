@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+    <title>DDP Start Page</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="author" content="David A York" />
+	<meta name="description" content="index page for Section 5: Bootstrap of Complete Web Development Course, from Rob Percival on Udemy" />
+	<meta name="keywords" content="Bootstrap practice exercise">
+	<link rel="icon" href="img/DNA-tree-crop2-alpha_tilt.png">
+
+	<!-- jQuery via Googleapis -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+	<!-- Bootstrap via MaxCDN -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+	<style>
+	body {
+		margin:0;
+		padding:0;
+		background-color:#7080aa;
+	}
+
+	.container {
+		Width:90%;
+		margin-left:auto;
+		margin-right:auto;
+	}
+
+
+	.navbar-brand {
+		padding-left:10px;
+		padding-left:50px;
+	}
+
+	#topContainer {
+		background-image: url("img/books_maxcomp_faded.jpg");
+		height:400px;
+		width:100%;
+		padding-top:100px;
+		background-size:cover;
+		background-repeat:no-repeat;
+	}
+	.jumbotron {
+		width: 80%;
+		margin-top: 40px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 10px;
+		color:white;
+		font-weight:bold;
+		opacity:0.84;
+		background-color:#7080aa;
+	}
+
+	.cover-heading {
+		width: 63%;
+		margin-left:auto;
+		margin-right:auto;
+	}
+
+	.jumbotron img {
+		float:left;
+		margin:15px 6px 0 0;
+		width-max:35%;
+		height-max:100%;
+	}
+	.jumbotron p {
+		margin:10px;
+		font-size: 0.9em;
+		font-weight:bold;
+	}
+	#moreButton {
+		width:10%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.footer {
+		text-align:center;
+		color:white;
+	}
+
+	.footer a {
+		color:yellow;
+	}
+
+	</style>
+</head>
+
+<body>
+
+<!-- container for all navbars  here -->
+
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container" >
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="">Developing Data Products Project</a>
+				</div> <!-- END navbar-header  -->
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="blog.html">Survey Background</a></li>
+					<li><a href="projects.html">How Operates</a></li>
+					<li><a href="copywriting.html">Survey</a></li>
+					<li><a href="services.html">Disclosures</a></li>
+					<li><a href="contact.html">Contacts</a></li>
+				</ul> <!--END navbar-nav -->
+			</div> <!-- END navbar-collapse -->
+		</div>  <!-- END container of navs -->
+	</div> <!-- END of navbars default -->
+
+
+
+	<div class="container contentContainer" id="topContainer">
+	<!-- Jumbotron -->
+		  <div class="jumbotron">
+
+			<img src="img/DNA-tree-crop2-alpha_tilt.png" alt="Ningishzida - lord of the good tree" >
+			<h2 class="text-center">Statistical Analysis of Health and Stress Data.</h2>
+			<p class="lead">The Project's intent is that your stress factor inventory, along with all who complete this questionaire contribute to a better understanding of the role of stress in the development illness and disability.</p>
+			<p>This current application is focused on the preliminary data gathering phase by presentation of a well known Life Style Assessment Tool for completion by  our site visitors. Minimal demographic information: email (for follow-up and to check for multiple submissions by the same individuals), the first 3 digits of your zip code (which identifies only a US region), which age range you fall into and finally whether you agree to be contacted for follow-up of you subsequent state of health. Everything else is a group of multiple choice questions.</p>
+			<p>Any data collected, is only saved anounymously, with your agreement, and is subject only to use by this project in a pooled (non-individually identifiable) form. No individual information is shared outside of the project and is stored elsewhere, off-line.</p>
+			<p>We hope you will consider contibuting to this very important study of the stress on Americans and the potential prediction of risk of subsequently developing illness.</p><br>
+			<p id="moreButton"><a href="/about.html" class="btn btn-lg btn-default" style="border-color:black"  >Learn more</a></p>
+		  </div>
+
+		<div class="footer">
+			<p id="bottomCredits">
+			<br><br><br><br><br><br><br><br><br>
+			© Ningishzida-Thoth  Medical Analytics (<em>formerly</em> Medmatix), 2014 <br>
+			sysop at: <a href="mailto:infmtx.feedback@gmail.com"> contact or feedback</a> - last update:January 11, 2016</p>
+		</div>
+	</div>
+
+
+
+<!-- Javascript and jQuery code -->
+	<script>
+		$(".contentContainer").css("min-height",$(window).height());
+
+	</script> <!-- END javascript section -->
+
+</body>
+</html>

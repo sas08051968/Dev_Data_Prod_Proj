@@ -6,15 +6,21 @@
 
 # in R (inworking directory where SAS file downloaded)
   library(Hmisc)
-  mydata <- sasxport.get("LLCP2014.XPT")
+  mydata <- sasxport.get("C:/Users/david/Documents/GitHub/Dev_Data_Prod_Proj/Data(Do_Not_Push)/LLCP2014.XPT")
   # Note: character variables are converted to R factors
+
+# or . . .
+  cdc2014 <-read.csv("CDC2014.txt",header=FALSE,sep=",")
 
 # or . . .
 
   # Assign the column names manually
-  read.fwf("myfile.txt",
-           c(7,5,-2,1,1,1,1,1,1), # Width of the columns. -2 means drop those columns
+  setwd("C:/Users/david/Documents/GitHub/Dev_Data_Prod_Proj/Data(Do_Not_Push)")
+  varLengths <- read.csv("Variable_Lengths.csv", header=FALSE)
+  vectVarLengths <- as.vector(varLengths[,1])
+  cdc2014 <-read.fwf("CDC2014.txt",
+           vectVarLengths, # Width of the columns. -2 means drop those columns
            skip=1,                # Skip the first line (contains header here)
-           col.names=c("subject","sex","s1","s2","s3","s4","s5","s6"),
+           header=FALSE,           # no colnames in header
            strip.white=TRUE)      # Strip out leading and trailing whitespace when reading each
-
+  setwd("C:/Users/david/Documents/GitHub/Dev_Data_Prod_Proj/")

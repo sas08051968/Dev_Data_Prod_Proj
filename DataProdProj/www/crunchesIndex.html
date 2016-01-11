@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+<head>
+    <title>D.York Landing Page</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="author" content="David A York" />
+	<meta name="description" content="index page for Section 5: Bootstrap of Complete Web Development Course, from Rob Percival on Udemy" />
+	<meta name="keywords" content="Bootstrap practice exercise">
+	<link rel="icon" href="img/DNA-tree-crop2-alpha_tilt.png">
+	
+	<!-- jQuery via Googleapis -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+	
+	<!-- Bootstrap via MaxCDN -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	
+	<style>
+	body {
+		margin:0;
+		padding:0;
+		background-color:#7080aa;
+	}
+	
+	.container {
+		Width:90%;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	
+	
+	.navbar-brand {
+		padding-left:10px;
+		padding-left:50px;
+	}
+	
+	#topContainer {
+		background-image: url("img/books_maxcomp_faded.jpg");
+		height:400px;
+		width:100%;
+		padding-top:100px;
+		background-size:cover;
+		background-repeat:no-repeat;
+	}
+	.jumbotron {
+		width: 80%;
+		margin-top: 40px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 10px;
+		color:white; 
+		font-weight:bold;
+		opacity:0.84; 
+		background-color:#7080aa;
+	}
+	
+	.cover-heading {
+		width: 63%;
+		margin-left:auto;
+		margin-right:auto;
+	}
+
+	.jumbotron img {
+		float:left;
+		margin:15px 6px 0 0;
+		width-max:35%;
+		height-max:100%;
+	}
+	.jumbotron p {
+		margin:10px;
+		font-size: 0.9em;
+		font-weight:bold;
+	}
+	#moreButton {
+		width:10%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.footer {
+		text-align:center;
+		color:white;
+	}
+	
+	.footer a {
+		color:yellow;
+	}
+	
+	</style>
+</head>
+
+<body>
+
+<!-- container for all navbars  here -->
+
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container" >
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="">Ningishzidda-Thoth Consulting</a>
+				</div> <!-- END navbar-header  -->
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="blog.html">Blog</a></li>
+					<li><a href="projects.html">Projects</a></li>
+					<li><a href="copywriting.html">Copy Writing</a></li>
+					<li><a href="services.html">Contacts</a></li>
+					<li><a href="contact.html">Services</a></li>
+				</ul> <!--END navbar-nav -->
+			</div> <!-- END navbar-collapse -->
+		</div>  <!-- END container of navs -->
+	</div> <!-- END of navbars default -->
+	
+	
+	
+	<div class="container contentContainer" id="topContainer">
+	<!-- Jumbotron -->
+		  <div class="jumbotron">		  
+			
+			<img src="img/DNA-tree-crop2-alpha_tilt.png" alt="Ningishzida - lord of the good tree" >
+			<h2 class="text-center">Statistical Analysis of Healthcare Data.</h2>
+			<p class="lead">My name is David York. It is my hope that you will come inside my site to discover a broad and varied set of knowledge, 
+			   skills and experience. I write technical articles and reports - particularly on biomedical topics. I'm a web page developer with science and technical themes especially. 
+			   I develop computer applications focused on statistical data analysis. I am pleased to offer the services of all my skills to you.</p><br>
+			<p>A particular interest that I have is Health Care Data, particularly the clinical data constantly generated and aggregated from patient encounters. 
+			   My goal is to explore ways of turning this huge body of data into knowledge. Come in and explore ideas with me.</p>
+			<p id="moreButton"><a href="/about.html" class="btn btn-lg btn-default" style="border-color:black"  >Learn more</a></p>
+		  </div> 
+		  
+		<div class="footer">
+			<p id="bottomCredits">
+			<br><br><br><br><br><br><br><br><br>
+			© Ningishzida-Thoth  Medical Analytics and Content Consulting (<em>formerly</em> Medmatix), 2014 <br>
+			sysop at: <a href="mailto:infmtx.feedback@gmail.com"> contact or feedback</a> - last update:February 4, 2015</p>
+		</div>
+	</div>
+	
+	
+		
+<!-- Javascript and jQuery code -->
+	<script>
+		$(".contentContainer").css("min-height",$(window).height());
+	
+	</script> <!-- END javascript section -->
+
+</body>
+</html>
