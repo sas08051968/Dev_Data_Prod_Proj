@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <script type="application/shiny-singletons"></script>
+  <script type="application/html-dependencies">json2[2014.02.04];jquery[1.11.0];shiny[0.12.2];ionrangeslider[2.0.12];strftime[0.9.2];bootstrap[3.3.1]</script>
+<script src="shared/json2-min.js"></script>
+<script src="shared/jquery.min.js"></script>
+<link href="shared/shiny.css" rel="stylesheet" />
+<script src="shared/shiny.min.js"></script>
+<link href="shared/ionrangeslider/css/ion.rangeSlider.css" rel="stylesheet" />
+<link href="shared/ionrangeslider/css/ion.rangeSlider.skinShiny.css" rel="stylesheet" />
+<script src="shared/ionrangeslider/js/ion.rangeSlider.min.js"></script>
+<script src="shared/strftime/strftime-min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="shared/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="shared/bootstrap/js/bootstrap.min.js"></script>
+<script src="shared/bootstrap/shim/html5shiv.min.js"></script>
+<script src="shared/bootstrap/shim/respond.min.js"></script>
+  <title>Life Stress Survey</title>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Life Stress Survey</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <form class="well">
+          <p>If a life event has occurred for you, select "Yes". Otherwise check "No" or leave unchecked.</p>
+          <p>When the survey has been completed press "Submit and your score will be calculated and the score and its interpretation with respect to your 2 year illness risk will be returned.</p>
+        </form>
+      </div>
+      <div class="col-sm-8">
+        <p>
+          <strong>Life Event</strong>
+        </p>
+        <p>
+          <div id="question1" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+            <label class="control-label" for="question1">Death of Spouse</label>
+            <div class="shiny-options-group">
+              <label class="radio-inline">
+                <input type="radio" name="question1" value="0" checked="checked"/>
+                <span>No</span>
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="question1" value="100"/>
+                <span>Yes</span>
+              </label>
+            </div>
+          </div>
+        </p>
+        <div id="question2" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question2">Divorce</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question2" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question2" value="73"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question3" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question3">Marital separation</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question3" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question3" value="65"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question4" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question4">Jail term</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question4" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question4" value="63"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question5" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question5">Death of close family member</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question5" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question5" value="63"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question6" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question6">Marriage</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question6" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question6" value="53"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question7" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question7">Fired at work</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question7" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question7" value="50"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question8" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question8">Marital reconciliation</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question8" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question8" value="47"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question9" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question9">Retirement</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question9" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question9" value="45"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question10" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question10">Change in health of family member</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question10" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question10" value="44"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question11" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question11">Pregnancy</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question11" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question11" value="40"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question12" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question12">Sex difficulties</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question12" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question12" value="39"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question13" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question13">Gain of new family member</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question13" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question13" value="39"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question14" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question14">Business readjustment</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question14" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question14" value="39"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question15" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question15">Change in financial state</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question15" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question15" value="38"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question16" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question16">Death of close friend</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question16" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question16" value="Yes=37"/>
+              <span>Yes=37</span>
+            </label>
+          </div>
+        </div>
+        <div id="question17" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question17">Change to a different line of work</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question17" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question17" value="36"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question18" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question18">Change in number of arguments with spouse</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question18" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question18" value="35"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question19" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question19">Home Mortgage over $100,000</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question19" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question19" value="31"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question20" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question20">Foreclosure or mortgage or loan</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question20" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question20" value="30"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question21" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question21">Change in responsibilities at work</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question21" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question21" value="29"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question22" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question22">Son or daughter leaving home</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question22" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question22" value="29"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question23" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question23">Trouble with in-laws</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question23" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question23" value="29"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question24" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question24">Outstanding personal achievement</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question24" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question24" value="28"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question25" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question25">Spouse begins or stops work</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question25" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question25" value="26"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question26" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question26">Begin or end school</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question26" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question26" value="26"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question27" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question27">Change in living conditions</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question27" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question27" value="25"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question28" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question28">Revision of personal habits</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question28" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question28" value="24"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question29" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question29">Trouble with boss</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question29" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question29" value="23"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question30" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question30">Change in work hours or conditions</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question30" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question30" value="20"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question31" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question31">Change in residence</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question31" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question31" value="20"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question32" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question32">Change in schools</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question32" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question32" value="20"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question33" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question33">Change in recreation</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question33" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question33" value="19"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question34" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question34">Change in church activities</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question34" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question34" value="19"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question35" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question35">Change in social activities</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question35" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question35" value="18"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question36" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question36">Mortgage or loan of less than $100,000</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question36" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question36" value="17"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question37" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question37">Change in sleeping habits</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question37" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question37" value="16"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question38" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question38">Change in number of family get-togethers</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question38" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question38" value="15"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div id="question39" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+          <label class="control-label" for="question39">Change in eating habits</label>
+          <div class="shiny-options-group">
+            <label class="radio-inline">
+              <input type="radio" name="question39" value="0" checked="checked"/>
+              <span>No</span>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="question39" value="15"/>
+              <span>Yes</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group shiny-input-container">
+          <label class="control-label" for="question40">Single person living alone,  Estimate the stress involved for yourself</label>
+          <input class="js-range-slider" id="question40" data-min="0" data-max="15" data-from="0" data-step="1" data-grid="true" data-grid-num="7.5" data-grid-snap="false" data-prettify-separator="," data-keyboard="true" data-keyboard-step="6.66666666666667" data-drag-interval="true" data-data-type="number"/>
+          <div class="slider-animate-container">
+            <a href="#" class="slider-animate-button" data-target-id="question40" data-interval="1000" data-loop="FALSE">
+              <span class="play">
+                <i class="glyphicon glyphicon-play"></i>
+              </span>
+              <span class="pause">
+                <i class="glyphicon glyphicon-pause"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="form-group shiny-input-container">
+          <label class="control-label" for="question41">Other, describe briefly and estimate the stress involved for yourself</label>
+          <input class="js-range-slider" id="question41" data-min="0" data-max="15" data-from="0" data-step="1" data-grid="true" data-grid-num="7.5" data-grid-snap="false" data-prettify-separator="," data-keyboard="true" data-keyboard-step="6.66666666666667" data-drag-interval="true" data-data-type="number"/>
+          <div class="slider-animate-container">
+            <a href="#" class="slider-animate-button" data-target-id="question41" data-interval="1000" data-loop="FALSE">
+              <span class="play">
+                <i class="glyphicon glyphicon-play"></i>
+              </span>
+              <span class="pause">
+                <i class="glyphicon glyphicon-pause"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="form-group shiny-input-container">
+          <label for="text41">Name stressor (up to 15 characters)</label>
+          <input id="text41" type="text" class="form-control" value=""/>
+        </div>
+        <br/>
+        <div>
+          <button type="submit" class="btn btn-primary">Submit Survey</button>
+        </div>
+        <br/>
+        <br/>
+        <p>NOTE: Interpretation of the overall score is difficult because of the large differences in each person's ability to cope and their particular reactions to stress, but here are some general guidelines.</p>
+        <p>A total of 150 or less is good, suggesting a low level of stress in your life and a low probability of developing a stress-related disorder.</p>
+        <p>Your stress score of </p>
+        <pre id="resultText0" class="shiny-text-output"></pre>
+        <p>If your score is 300 or more, statistically you stand an almost 80% chance of getting sick in the near future.  </p>
+        <p>If your score is 150 to 299, the chances are about 50%.</p>
+        <p>At less than 150, about 30%.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
