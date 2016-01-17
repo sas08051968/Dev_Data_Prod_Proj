@@ -1,0 +1,96 @@
+---
+title: "The Life Event Survey Tool"
+author: "David A York"
+date: "January 16, 2016"
+output: slidy_presentation
+---
+
+```{r echo=FALSE}
+## Dummy Survey Data Creation Maintenance
+
+illnessSurvey <- as.data.frame(matrix(data=c("fld1","Fld2","fld3", "fld4","fld5","fld6"),nrow=1, byrow=TRUE))
+colnames(illnessSurvey) <- c("refNo","collectDate", "subjEmail","cenTract","ageRange","score")
+
+# change all to character
+for (i in seq(1:6) ) {
+  illnessSurvey[,i] <- as.character(illnessSurvey[,i])
+}
+# make first line proper format dummy data
+illnessSurvey[1,] <- list("1000000","2016-01-31","dummy0@gmail.com","50218","65","150")
+# change collectDate tp data class
+illnessSurvey$collectDate <-as.Date(illnessSurvey$collectDate)
+# change score to integer
+illnessSurvey$score <-as.integer(illnessSurvey$score)
+# add data with age range
+illnessSurvey[2,] <- list("1000001","2016-01-31","dummy1@gmail.com","02005","17",100)
+illnessSurvey[3,] <- list("1000002","2016-01-31","dummy2@gmail.com","04105","20",100)
+illnessSurvey[4,] <- list("1000003","2016-01-31","dummy3@gmail.com","08805","30",300)
+illnessSurvey[5,] <- list("1000004","2016-01-31","dummy4@gmail.com","12305","40",60)
+illnessSurvey[6,] <- list("1000005","2016-01-31","dummy5@gmail.com","45304","50",250)
+illnessSurvey[7,] <- list("1000006","2016-01-31","dummy6@gmail.com","82614","60",100)
+illnessSurvey[8,] <- list("1000007","2016-01-31","dummy7@gmail.com","98014","65",200)
+illnessSurvey[9,] <- list("1000008","2016-01-31","dummy8@gmail.com","71030","65",200)
+
+#factorize ageRange with proper levels
+illnessSurvey$ageRange <- as.factor(illnessSurvey$ageRange)
+
+```
+
+## The Investment
+
+The Project intends to provide both a client friendly data collection platform and a tool for database maintenance, manipulation and analysis.
+
+- The Client-user facing part is a clear and simple survey taker and feedback application
+- The How-tos for both client-user and investigator-user are concise and complete and integrated smoothly with the tool
+- The complete tool collects, provides client feed back and outcome follow-up. As well the collected data are stored in simple comma-separated format which can be sent to the investigator site for study.
+- simple view and analysis of the insitu data is provided by the tool and it's integrity can be assured.
+
+
+## The Tool
+
+- a free open source solution
+- The tool is a complete data input, storage, analysis and maintenance application.
+- The tool is secure when deployed,
+  - zipcodes are converted immediately to census tract codes before storing
+  - potential identifying data are encrypted
+  - data can only be sent to a preselected addresses
+
+**Database Excerpt**
+```{r echo=FALSE}
+knitr::kable(illnessSurvey[c(1:5),c(2:6)],, col.names=c("Date","email","Tract","Age Group","Score"))
+```
+
+
+
+
+## Simple Reports - Tables
+<br><br>
+**Summary**
+<br>
+```{r echo=FALSE}
+knitr::kable(summary(illnessSurvey[,c(5,6)]))
+```
+
+
+
+
+## Simple Reports - Plots
+<br>
+<center>
+Plot Age Group versus Score
+<br>
+```{r echo=FALSE}
+plot(illnessSurvey[,c(5,6)])
+```
+
+
+
+
+## The Payoff
+
+- simple, free, open-source solution to hosting the survey
+- Client-users have an easy survey to complete with immediate risk feedback as reward
+- Survey collected unattended, 24x7
+- Secure and confidential
+- The application communicates, on demand, with the investigator, off site, to allow more complex analysis, presentation and ultimate publication.
+

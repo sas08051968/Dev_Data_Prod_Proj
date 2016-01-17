@@ -8,12 +8,12 @@ shinyUI(fluidPage(
     h2("Instructions", style="text-align:center"),
     p('If a life event has occurred for you, select "Yes". Otherwise check "No" or leave unchecked.'),
     p('When the survey has been completed press "Submit and your score will be calculated and the score and its interpretation with respect to your 2 year illness risk will be returned.'),
-
+    #collectData<-Sys.Date(),
   p("For the purposes of future follow-up an email is requested. In 1 and 2 years an email form will be sent to you with 2 simple outcome questions."),
-  textInput(inputId="eMail", label="Your email address", value = NULL, width = '200px'),
+  textInput(inputId="subjEmail", label="Your email address", value = NULL, width = '200px'),
 
   p("To apply the data by age, we request your age range. "),
-  selectInput("ageRange", "Age range now:",
+  selectInput(inputId="ageRange", "Age range now:",
               c("under 18" = "17",
                 "18 to 25" = "20",
                 "26 to 35" = "30",
@@ -22,8 +22,8 @@ shinyUI(fluidPage(
                 "56 to 64" = "60",
                 "over 65" = "65"), width="100px"),
 
-  p("To apply the data to a region of the US we request the FIRST 3 digits of your ZIP code."),
-  textInput(inputId="threeZIP", label="First 3 of ZIP", value="000", width = "100px"),
+  p("To relate the data to a region of the US we request your ZIP code, which is not stored, but converted for storage to a US Census Tract number representing a whole block of ZIP codes."),
+  textInput(inputId="zipCode", label="ZIP Code", value="01001", width = "100px"),
   br(),
   p(strong("Thank you for contributing to this project."))
   , style="background-color:Gold"),
@@ -91,11 +91,14 @@ fluidRow(
     p("A total of 150 or less is good, suggesting a low level of stress in your life and a low probability of developing a stress-related disorder."),
 
     p("Your stress score is"),
-    verbatimTextOutput("resultText0"),
+    textOutput("resultText0"),
+    br(),
 
     p("If your score is 300 or more, statistically you stand an almost 80% chance of getting sick in the near future.  "),
     p("If your score is 150 to 299, the chances are about 50%."),
-    p("At less than 150, about 30%.")
+    p("At less than 150, about 30%."),
+    verbatimTextOutput("codedResponses"),
+    verbatimTextOutput("studySumRec")
   ,style="padding:20px")
   , style="background-color:Gold")
 

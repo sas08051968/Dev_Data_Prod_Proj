@@ -1,0 +1,75 @@
+---
+title: "The Life Event Survey Tool"
+author: "David A York"
+date: "January 16, 2016"
+output: ioslides_presentation
+---
+
+```{r echo=FALSE}
+## Dummy Survey Data Creation Maintenance
+
+illnessSurvey <- as.data.frame(matrix(data=c("fld1","Fld2","fld3", "fld4","fld5","fld6"),nrow=1, byrow=TRUE))
+colnames(illnessSurvey) <- c("refNo","collectDate", "subjEmail","threeZip","ageRange","score")
+
+# change all to character
+for (i in seq(1:6) ) {
+  illnessSurvey[,i] <- as.character(illnessSurvey[,i])
+}
+# make first line proper format dummy data
+illnessSurvey[1,] <- list("1000000","2016-01-31","dummy0@gmail.com","502","65","150")
+# change collectDate tp data class
+illnessSurvey$collectDate <-as.Date(illnessSurvey$collectDate)
+# change score to integer
+illnessSurvey$score <-as.integer(illnessSurvey$score)
+# add data with age range
+illnessSurvey[2,] <- list("1000001","2016-01-31","dummy1@gmail.com","020","17",100)
+illnessSurvey[3,] <- list("1000002","2016-01-31","dummy2@gmail.com","041","20",100)
+illnessSurvey[4,] <- list("1000003","2016-01-31","dummy3@gmail.com","088","30",300)
+illnessSurvey[5,] <- list("1000004","2016-01-31","dummy4@gmail.com","123","40",60)
+illnessSurvey[6,] <- list("1000005","2016-01-31","dummy5@gmail.com","453","50",250)
+illnessSurvey[7,] <- list("1000006","2016-01-31","dummy6@gmail.com","826","60",100)
+illnessSurvey[8,] <- list("1000007","2016-01-31","dummy7@gmail.com","980","65",200)
+illnessSurvey[9,] <- list("1000008","2016-01-31","dummy8@gmail.com","710","65",200)
+
+#factorize ageRange with proper levels
+illnessSurvey$ageRange <- as.factor(illnessSurvey$ageRange)
+
+```
+
+## The Investment
+
+The Project intends to provide both a client friendly data collection platform and a tool for database maintenance, manipulation and analysis.
+
+- The Client-user facing part is a clear and simple survey taker and feedback application
+- The How-tos for both client-user and investigator-user are concise and complete and integrated smoothly with the tool
+- The complete tool collects, provides client feed back and outcome follow-up. As well the collected data are stored in simple comma-separated format which can be sent to the investigator site for study.
+- simple view and analysis of the insitu data is provided by the tool and it's integrity can be assured.
+
+
+## The Tool
+
+- The tool is a complete data input, storage, analysis and maintenance application.
+- The tool is secure when deployed,
+  - potential identifying data are encrypted
+  - data can only be sent to a preselected addresses
+
+
+
+
+
+
+
+## Other Simple Reports
+
+```{r echo=FALSE}
+summary(illnessSurvey[,c(5,6)])
+plot(illnessSurvey[,c(5,6)])
+```
+
+## The Payoff
+
+- Client-users have an easy survey to complete with immediate risk feedback as reward
+- Survey collected unattended, 24x7
+- Secure and confidential
+- The application communicates, on demand, with the investigator, off site, to allow more complex analysis, presentation and ultimate publication.
+
