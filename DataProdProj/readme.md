@@ -54,6 +54,10 @@ There are 4 components to the implementation of Web Data Survey Application Proj
 
 - Preliminary exploratory analysis, Tables and Plots etc.
 
+- Completion of the study with email follow-up (after 2 years) of illness outcomes
+
+-Indepth statistical analysis of collated date, with and without outcome data.
+
 
 ##Results
 
@@ -66,7 +70,6 @@ Data sent to a dropbox is merged as individual records into two comma separated 
 Survey results are combined with follow-up health outcomes data (automatic email follow-up.
 Analyses are then carried out on the combined data in R.
 
-##Ongoing Conclusions
 Data are monitored and cleaned and analyzed in stages.
 
 ###Short-term
@@ -78,3 +81,20 @@ Data are monitored and cleaned and analyzed in stages.
 - Validation or the suvey instrument against the 2 year illness oucomes (email survey 
 
 - Age related and geogrphic trends of illness development in relation to stress is studied.
+
+##Ongoing Conclusions
+The Part 1 project nears completion
+
+The Part 1 presentation is complete
+
+The Part 2 implementation plan is formulated and proceeding as expected.
+
+###Short-term
+
+- Benefits outlined in the presentation are clearly demonstrable
+
+###Long term
+
+- pending instrument validation as a predictor of subsequent illness.
+
+- pending realization of geographic trend and age relationship analysis of instrument and outcomes.
