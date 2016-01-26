@@ -1,7 +1,7 @@
-DDProdPres
+template
 ========================================================
-author: David A York
-date: January 9, 2016
+author: 
+date: 
 
 First Slide
 ========================================================
@@ -34,4 +34,4 @@ summary(cars)
 Slide With Plot
 ========================================================
 
-![plot of chunk unnamed-chunk-2](DDProdPres-figure/unnamed-chunk-2-1.png) 
+![plot of chunk unnamed-chunk-2](sample-figure/unnamed-chunk-2-1.png) 

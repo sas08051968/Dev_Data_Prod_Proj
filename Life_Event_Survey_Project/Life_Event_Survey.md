@@ -20,33 +20,63 @@ The Project intends to provide both a client friendly data collection platform a
 The Tool
 ========================================================
 
+- a free open source solution
 - The tool is a complete data input, storage, analysis and maintenance application.
 - The tool is secure when deployed,
   - zipcodes are converted immediately to census tract codes before storing
   - potential identifying data are encrypted
   - data can only be sent to a preselected addresses
 
-_eg._ **A Simple Summary**
+**Database Excerpt**
 
+|Date       |email                                  |Tract |Age Group | Score|Risk |
+|:----------|:--------------------------------------|:-----|:---------|-----:|:----|
+|10/17/2016 |libero.et.tristique@quisdiamluctus.net |40146 |30        |   502|high |
+|2/12/2015  |dui.nec@augue.org                      |17223 |17        |   856|high |
+|6/20/2016  |molestie@molestietellusAenean.com      |49443 |60        |   173|high |
+|11/13/2015 |lectus@pharetrautpharetra.edu          |39935 |17        |   665|high |
+
+
+Simple Reports - Tables
+=========================================================
+<br><br>
+**Summary**
+<br>
+
+|   |ageRange |    score      |
+|:--|:--------|:--------------|
+|   |17:129   |Min.   :   0.0 |
+|   |20:120   |1st Qu.: 271.0 |
+|   |30:101   |Median : 614.0 |
+|   |40:118   |Mean   : 645.7 |
+|   |50:102   |3rd Qu.:1015.2 |
+|   |60:121   |Max.   :1412.0 |
+|   |65:109   |NA             |
+
+Simple Reports - Plots
+========================================================
+<br>
+<center>
+Plot Age Group versus Score
+
+```r
+plot(aggData)
 ```
- ageRange     score      
- 17:1     Min.   : 60.0  
- 20:1     1st Qu.:100.0  
- 30:1     Median :150.0  
- 40:1     Mean   :162.2  
- 50:1     3rd Qu.:200.0  
- 60:1     Max.   :300.0  
- 65:3                    
-```
 
-Other Simple Reports
-=======================================================
+![plot of chunk unnamed-chunk-4](Life_Event_Survey-figure/unnamed-chunk-4-1.png) 
+<br>
 
-![plot of chunk unnamed-chunk-3](Life_Event_Survey-figure/unnamed-chunk-3-1.png) 
+
+Simple Reports - Plots
+========================================================
+
+![plot of chunk unnamed-chunk-5](Life_Event_Survey-figure/unnamed-chunk-5-1.png) 
 
 
 The Payoff
 ========================================================
+
+- simple, free, open-source solution to hosting the survey
 - Client-users have an easy survey to complete with immediate risk feedback as reward
 - Survey collected unattended, 24x7
 - Secure and confidential

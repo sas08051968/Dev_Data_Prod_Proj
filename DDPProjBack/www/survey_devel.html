@@ -1,158 +1,81 @@
-<!doctype html>
 <html>
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>Life Stress Survey</title>
-  <script type="application/shiny-singletons"></script>
-  <script type="application/html-dependencies">json2[2014.02.04];
-    jquery[1.11.0];shiny[0.12.2];selectize[0.11.2];
-    ionrangeslider[2.0.12];strftime[0.9.2];bootstrap[3.3.1]
-  </script>
-  <script src="shared/json2-min.js"></script>
-  <script src="shared/jquery.min.js"></script>
-  <link href="shared/shiny.css" rel="stylesheet" />
-  <script src="shared/shiny.min.js"></script>
-  <link href="shared/selectize/css/selectize.bootstrap3.css" rel="stylesheet" />
-
-  <!--[if lt IE 9]>
-  <script src="shared/selectize/js/es5-shim.min.js"></script>
-  <![endif]-->
-
-  <script src="shared/selectize/js/selectize.min.js"></script>
-  <link href="shared/ionrangeslider/css/ion.rangeSlider.css" rel="stylesheet" />
-  <link href="shared/ionrangeslider/css/ion.rangeSlider.skinShiny.css" rel="stylesheet" />
-  <script src="shared/ionrangeslider/js/ion.rangeSlider.min.js"></script>
-  <script src="shared/strftime/strftime-min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="shared/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-  <script src="shared/bootstrap/js/bootstrap.min.js"></script>
-  <script src="shared/bootstrap/shim/html5shiv.min.js"></script>
-  <script src="shared/bootstrap/shim/respond.min.js"></script>
-  <meta name="author" content="David A York" />
-	<meta name= "date" content="February 4, 2016"/>
-	<meta name="description" content="Survey page for a Project Assignment for the Coursera course,
-	  'Developing Data Products'. Short term details include being a fulfillment of course requirements
-	  (in part); In the long term, the goal is the development of an active data collection and relay
-	  site for an ongoing study." />
-	<meta name="keywords" content="Coursera Johns Hopkins Data Science Developing Data Products Life
-	  Event Stress and Illness Study">
-	<link rel="icon" href="img/DNA-tree-crop2-alpha_tilt.png">
-
-	<!-- jQuery via Googleapis -->
-	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-
-	<!-- Bootstrap via MaxCDN -->
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="./css/bootstrap.min.css">
-	<!-- Optional theme -->
-	<!-- <link rel="stylesheet" href="./bootstrap-theme.min.css"> -->
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="./js/bootstrap.min.js"></script>
-
-	<style>
-	body {
-		margin:0;
-		padding:0;
-		background-color:gold;
-	}
-
-	.container {
-		Width:90%;
-		margin-left:auto;
-		margin-right:auto;
-	}
-
-
-	.navbar-brand {
-		padding-left:10px;
-		padding-left:50px;
-	}
-
-	#topContainer {
-    margin:0px;
-		padding: 0px;
-    width:100%;
-		padding-top:100px;
-		background-size:cover;
-	}
-
-	.cover-heading {
-		width: 63%;
-		margin-left:auto;
-		margin-right:auto;
-	}
-
-	#moreButton {
-		width:10%;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.footer {
-		text-align:center;
-		color:white;
-	}
-
-	.footer a {
-		color:yellow;
-	}
-
-	</style>
+<style type="text/css">
+.knitr .inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+}
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage .left {
+  text-align: left;
+}
+.rimage .right {
+  text-align: right;
+}
+.rimage .center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+<title>Title</title>
 </head>
 
 <body>
-
-<div class="container contentContainer" id="topContainer">
-
-<!-- container for all navbars starts here =============== -->
-	<div class="navbar navbar-default navbar-fixed-top">
-		<div class="container" >
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="">Developing Data Products Project</a>
-				</div> <!-- END navbar-header  -->
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="../">Home</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="background.html">Survey Background</a></li>
-					<li><a href="howto.html">How Operates</a></li>
-				  <li class="active"><a href="#">Survey</a></li>
-					<li><a href="disclosures.html">Disclosures</a></li>
-					<li><a href="contact.html">Contacts</a></li>
-				</ul> <!--END navbar-nav -->
-			</div> <!-- END navbar-collapse -->
-		</div>  <!-- END container of navs -->
-	</div> <!-- END of navbars default -->
-<!-- container for all navbars end here =============== -->
-
-<div class="container-fluid">
+  <div class="container-fluid">
     <div class="col-sm-12">
         <h2 style="text-align:center">Life Stress Survey</h2>
     </div>
     <div class="col-sm-4" style="background-color:Gold">
       <h2 style="text-align:center">Instructions</h2>
-      8999999999
-      <div class="form-group shiny-input-container" style="width: 100px;">
-        <label for="refNo">Survey Number</label>
-        <input id="refNo" type="text" class="form-control" value="8999999999"/>
-      </div>
-      <div class="form-group shiny-input-container" style="width: 100px;">
-        <label for="collectDate">Survey date</label>
-        <input id="collectDate" type="text" class="form-control" value="2016-01-26"/>
-      </div>
-      <p>If a life event has occurred for you, select "Yes". Otherwise
-             check "No" or leave unchecked.</p>
-      <p>When the survey has been completed press "Submit and your score will be
-             calculated and the score and its interpretation with respect to your 2
-             year illness risk will be returned.</p>
-      <p>For the purposes of future follow-up an email is requested. In 1 and 2
-             years an email form will be sent to you with 2 simple outcome
-             questions.</p>
+      <p>If a life event has occurred for you, select "Yes". Otherwise check "No" or leave unchecked.</p>
+      <p>When the survey has been completed press "Submit and your score will be calculated and the score and its interpretation with respect to your 2 year illness risk will be returned.</p>
+      <p>For the purposes of future follow-up an email is requested. In 1 and 2 years an email form will be sent to you with 2 simple outcome questions.</p>
       <div class="form-group shiny-input-container" style="width: 200px;">
         <label for="subjEmail">Your email address</label>
         <input id="subjEmail" type="text" class="form-control"/>
@@ -171,9 +94,7 @@
           <script type="application/json" data-for="ageRange" data-nonempty="">{}</script>
         </div>
       </div>
-      <p>To relate the data to a region of the US we request your ZIP code, which
-             is not stored, but converted for storage to a US Census Tract number
-             representing a whole block of ZIP codes.</p>
+      <p>To relate the data to a region of the US we request your ZIP code, which is not stored, but converted for storage to a US Census Tract number representing a whole block of ZIP codes.</p>
       <div class="form-group shiny-input-container" style="width: 100px;">
         <label for="zipCode">ZIP Code</label>
         <input id="zipCode" type="text" class="form-control" value="01001"/>
@@ -389,8 +310,8 @@
               <span>No</span>
             </label>
             <label class="radio-inline">
-              <input type="radio" name="question16" value="37"/>
-              <span>Yes</span>
+              <input type="radio" name="question16" value="Yes=37"/>
+              <span>Yes=37</span>
             </label>
           </div>
         </div>
@@ -408,8 +329,7 @@
           </div>
         </div>
         <div id="question18" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
-          <label class="control-label" for="question18">Change in number of arguments with
-                               spouse</label>
+          <label class="control-label" for="question18">Change in number of arguments with spouse</label>
           <div class="shiny-options-group">
             <label class="radio-inline">
               <input type="radio" name="question18" value="0" checked="checked"/>
@@ -645,8 +565,7 @@
           </div>
         </div>
         <div id="question36" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
-          <label class="control-label" for="question36">Mortgage or loan of less
-                               than $100,000</label>
+          <label class="control-label" for="question36">Mortgage or loan of less than $100,000</label>
           <div class="shiny-options-group">
             <label class="radio-inline">
               <input type="radio" name="question36" value="0" checked="checked"/>
@@ -672,8 +591,7 @@
           </div>
         </div>
         <div id="question38" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
-          <label class="control-label" for="question38">Change in number of family get
-                               -togethers</label>
+          <label class="control-label" for="question38">Change in number of family get-togethers</label>
           <div class="shiny-options-group">
             <label class="radio-inline">
               <input type="radio" name="question38" value="0" checked="checked"/>
@@ -699,8 +617,7 @@
           </div>
         </div>
         <div class="form-group shiny-input-container">
-          <label class="control-label" for="question40">Single person living alone,
-                              Estimate the stress involved for yourself</label>
+          <label class="control-label" for="question40">Single person living alone,  Estimate the stress involved for yourself</label>
           <input class="js-range-slider" id="question40" data-min="0" data-max="15" data-from="0" data-step="1" data-grid="true" data-grid-num="7.5" data-grid-snap="false" data-prettify-separator="," data-keyboard="true" data-keyboard-step="6.66666666666667" data-drag-interval="true" data-data-type="number"/>
           <div class="slider-animate-container">
             <a href="#" class="slider-animate-button" data-target-id="question40" data-interval="1000" data-loop="FALSE">
@@ -714,8 +631,7 @@
           </div>
         </div>
         <div class="form-group shiny-input-container">
-          <label class="control-label" for="question41">Other, describe briefly and
-                              estimate the stress involved for yourself</label>
+          <label class="control-label" for="question41">Other, describe briefly and estimate the stress involved for yourself</label>
           <input class="js-range-slider" id="question41" data-min="0" data-max="15" data-from="0" data-step="1" data-grid="true" data-grid-num="7.5" data-grid-snap="false" data-prettify-separator="," data-keyboard="true" data-keyboard-step="6.66666666666667" data-drag-interval="true" data-data-type="number"/>
           <div class="slider-animate-container">
             <a href="#" class="slider-animate-button" data-target-id="question41" data-interval="1000" data-loop="FALSE">
@@ -729,13 +645,15 @@
           </div>
         </div>
         <div class="form-group shiny-input-container">
-          <label for="question42">Name stressor(up to 15 characters)</label>
-          <input id="question42" type="text" class="form-control" value=""/>
+          <label for="text41">Name stressor (up to 15 characters)</label>
+          <input id="text41" type="text" class="form-control" value=""/>
         </div>
       </div>
       <br/>
       <span style="text-align:center">
-        <button class="btn btn-default action-button" id="submit" type="button submit">Submit</button>
+        <div>
+          <button type="submit" class="btn btn-primary">Submit Survey</button>
+        </div>
       </span>
       <br/>
     </div>
@@ -746,7 +664,6 @@
         <p>A total of 150 or less is good, suggesting a low level of stress in your life and a low probability of developing a stress-related disorder.</p>
         <p>Your stress score is</p>
         <div id="resultText0" class="shiny-text-output"></div>
-        <div id="message" class="shiny-text-output"></div>
         <br/>
         <p>If your score is 300 or more, statistically you stand an almost 80% chance of getting sick in the near future.  </p>
         <p>If your score is 150 to 299, the chances are about 50%.</p>
@@ -755,24 +672,6 @@
         <pre id="studySumRec" class="shiny-text-output"></pre>
       </div>
     </div>
-  </div>  <!-- END of MAIN SURVEY container ======================================= Survey -->
-
-
-
-		<div class="footer">
-			<p id="bottomCredits">
-			<br><br><br><br><br><br><br><br><br>
-			© Ningishzida-Thoth Biomedical Analytics, 2016 <br>
-			sysop at: <a href="mailto:infmtx.feedback@gmail.com"> contact or feedback</a> - last update:January 11, 2016</p>
-	</div>
-
-
-
-<!-- Javascript and jQuery code -->
-	<script>
-		$(".contentContainer").css("min-height",$(window).height());
-
-	</script> <!-- END javascript section -->
-
+  </div>
 </body>
 </html>

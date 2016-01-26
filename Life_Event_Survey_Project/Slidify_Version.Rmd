@@ -5,34 +5,57 @@ date: "January 16, 2016"
 output: slidy_presentation
 ---
 
-```{r echo=FALSE}
-## Dummy Survey Data Creation Maintenance
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(dplyr)
+# demo data file load
+demoData <<- read.csv("dataJan-21-2016.csv",colClasses=c("integer","character","character","character","factor", "integer"))
 
-illnessSurvey <- as.data.frame(matrix(data=c("fld1","Fld2","fld3", "fld4","fld5","fld6"),nrow=1, byrow=TRUE))
-colnames(illnessSurvey) <- c("refNo","collectDate", "subjEmail","cenTract","ageRange","score")
+factScore = c(rep(" ", length(demoData[,6])))
+for (i in seq(1:length(demoData$score))){if (demoData[i,6] > 150) {factScore[i] <- "high"}
+      else{factScore[i] <- "low"}}
+demoData <- mutate(demoData, riskGroup=as.factor(factScore))
 
+
+##Dummy Survey Data Creation Maintenance
+
+# create df
+  illnessSurvey <- as.data.frame(matrix(data=c("fld1","Fld2","fld3", "fld4","fld5","fld6"),nrow=1,
+                                        byrow=TRUE))
+  colnames(illnessSurvey) <- c("refNo","collectDate", "subjEmail","cenTract","ageRange","score")
 # change all to character
-for (i in seq(1:6) ) {
-  illnessSurvey[,i] <- as.character(illnessSurvey[,i])
-}
+  for (i in seq(1:6) ) {
+    illnessSurvey[,i] <- as.character(illnessSurvey[,i])
+  }
 # make first line proper format dummy data
-illnessSurvey[1,] <- list("1000000","2016-01-31","dummy0@gmail.com","50218","65","150")
+  illnessSurvey[1,] <- list("1000000","2016-01-31","dummy0@gmail.com","50218","65","150")
 # change collectDate tp data class
-illnessSurvey$collectDate <-as.Date(illnessSurvey$collectDate)
+  illnessSurvey$collectDate <-as.Date(illnessSurvey$collectDate)
 # change score to integer
-illnessSurvey$score <-as.integer(illnessSurvey$score)
+  illnessSurvey$score <-as.integer(illnessSurvey$score)
 # add data with age range
-illnessSurvey[2,] <- list("1000001","2016-01-31","dummy1@gmail.com","02005","17",100)
-illnessSurvey[3,] <- list("1000002","2016-01-31","dummy2@gmail.com","04105","20",100)
-illnessSurvey[4,] <- list("1000003","2016-01-31","dummy3@gmail.com","08805","30",300)
-illnessSurvey[5,] <- list("1000004","2016-01-31","dummy4@gmail.com","12305","40",60)
-illnessSurvey[6,] <- list("1000005","2016-01-31","dummy5@gmail.com","45304","50",250)
-illnessSurvey[7,] <- list("1000006","2016-01-31","dummy6@gmail.com","82614","60",100)
-illnessSurvey[8,] <- list("1000007","2016-01-31","dummy7@gmail.com","98014","65",200)
-illnessSurvey[9,] <- list("1000008","2016-01-31","dummy8@gmail.com","71030","65",200)
+  illnessSurvey[2,] <- list("1000001","2016-01-31","dummy1@gmail.com","02005","17",100)
+  illnessSurvey[3,] <- list("1000002","2016-01-31","dummy2@gmail.com","04105","20",100)
+  illnessSurvey[4,] <- list("1000003","2016-01-31","dummy3@gmail.com","08805","30",300)
+  illnessSurvey[5,] <- list("1000004","2016-01-31","dummy4@gmail.com","12305","40",60)
+  illnessSurvey[6,] <- list("1000005","2016-01-31","dummy5@gmail.com","45304","50",250)
+  illnessSurvey[7,] <- list("1000006","2016-01-31","dummy6@gmail.com","82614","60",100)
+  illnessSurvey[8,] <- list("1000007","2016-01-31","dummy7@gmail.com","98014","65",200)
+  illnessSurvey[9,] <- list("1000008","2016-01-31","dummy8@gmail.com","71030","65",200)
 
 #factorize ageRange with proper levels
-illnessSurvey$ageRange <- as.factor(illnessSurvey$ageRange)
+  illnessSurvey$ageRange <- as.factor(illnessSurvey$ageRange)
+  
+  
+  
+# create a map plot score by zip 
+  library(choroplethrZip)
+  df <- as.data.frame(cbind(as.character(demoData$cenTract),as.factor(demoData$riskGroup)),stringsAsFactors=FALSE)
+  colnames(df) <- c("region", "value")
+  df$value <- as.integer(df$value)
+  # summarize to mean value per region (zip/cenTract)
+  aggData <- summarise(group_by(df, region), round(mean(value)))
+  colnames(aggData) <- c("region","value")
+  regionScore <- zip_choropleth(aggData, title = "Score by region", num_colors = 2)
 
 ```
 
@@ -57,7 +80,7 @@ The Project intends to provide both a client friendly data collection platform a
 
 **Database Excerpt**
 ```{r echo=FALSE}
-knitr::kable(illnessSurvey[c(1:5),c(2:6)],, col.names=c("Date","email","Tract","Age Group","Score"))
+knitr::kable(demoData[c(1:5),c(2:6)], col.names=c("Date","email","Tract","Age Group","Score"))
 ```
 
 
@@ -68,7 +91,7 @@ knitr::kable(illnessSurvey[c(1:5),c(2:6)],, col.names=c("Date","email","Tract","
 **Summary**
 <br>
 ```{r echo=FALSE}
-knitr::kable(summary(illnessSurvey[,c(5,6)]))
+knitr::kable(summary(demoData[,c(5,6)]))
 ```
 
 
@@ -80,7 +103,7 @@ knitr::kable(summary(illnessSurvey[,c(5,6)]))
 Plot Age Group versus Score
 <br>
 ```{r echo=FALSE}
-plot(illnessSurvey[,c(5,6)])
+regionScore
 ```
 
 

@@ -1,0 +1,1 @@
+shinyapps::setAccountInfo(name='medmatixrshiny', token='B87A2B9CC51D303C770AB77B96BDB080', secret='gAm8s86NoZTTjaXxysUVuVd+7qNjAvc5zyrBHA/m')
