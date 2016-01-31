@@ -1,0 +1,95 @@
+---
+title: "The Life Event Survey Tool"
+author: "David A York"
+date: "January 16, 2016"
+output: slidy_presentation
+---
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(dplyr)
+# demo data file load
+demoData <<- read.csv("dataJan.21.2016.csv",colClasses=c("integer","character","character","character","factor", "integer"))
+
+factScore = c(rep(" ", length(demoData[,6])))
+for (i in seq(1:length(demoData$score))){
+  if (demoData[i,6] > 300) {
+    factScore[i] <- "high"
+  }else if(demoData[i,6] > 200){
+      factScore[i] <- "moderate"
+  }else{
+        factScore[i] <- "low"}
+  } 
+demoData <- mutate(demoData, riskGroup=as.factor(factScore))
+
+
+
+  
+# create a map plot score by zip 
+  library(choroplethrZip)
+  df <- as.data.frame(cbind(as.character(demoData$cenTract),as.character(demoData$score)),stringsAsFactors=FALSE)
+  colnames(df) <- c("region", "value")
+  df$value <- as.integer(df$value)
+  # summarize to mean value per region (zip/cenTract)
+  aggData <- summarise(group_by(df, region), round(mean(value)))
+  regionScore <- zip_choropleth(aggData, title = "Score by region", num_colors = 1, na.value="white")
+
+```
+
+## The Investment
+
+The Project intends to provide both a client friendly data collection platform and a tool for database maintenance, manipulation and analysis.
+
+- The Client-user facing part is a clear and simple survey taker and feedback application
+- The How-tos for both client-user and investigator-user are concise and complete and integrated smoothly with the tool
+- The complete tool collects, provides client feed back and outcome follow-up. As well the collected data are stored in simple comma-separated format which can be sent to the investigator site for study.
+- simple view and analysis of the insitu data is provided by the tool and it's integrity can be assured.
+
+
+## The Tool
+
+- a free open source solution
+- The tool is a complete data input, storage, analysis and maintenance application.
+- The tool is secure when deployed,
+  - zipcodes are converted immediately to census tract codes before storing
+  - potential identifying data are encrypted
+  - data can only be sent to a preselected addresses
+
+**Database Excerpt**
+```{r echo=FALSE}
+knitr::kable(demoData[c(1:5),c(2:6)], col.names=c("Date","email","Tract","Age Group","Score"))
+```
+
+
+
+
+## Simple Reports - Tables
+<br><br>
+**Summary**
+<br>
+```{r echo=FALSE}
+knitr::kable(summary(demoData[,c(5,6,7)]))
+```
+
+
+
+
+## Simple Reports - Plots
+<br>
+<center>
+Plot Age Group versus Score
+<br>
+```{r echo=FALSE}
+regionScore
+```
+
+
+
+
+## The Payoff
+
+- simple, free, open-source solution to hosting the survey
+- Client-users have an easy survey to complete with immediate risk feedback as reward
+- Survey collected unattended, 24x7
+- Secure and confidential
+- The application communicates, on demand, with the investigator, off site, to allow more complex analysis, presentation and ultimate publication.
+
