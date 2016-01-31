@@ -1,5 +1,6 @@
 # An Open Source Online Survey Data Collection System
-## Presentation: The Life Stress Survey Application for Handling and Exploratory Analysis of Stress and Health Data
+## Presentation: 
+## The Life Stress Survey Application for Handling and Exploratory Analysis of Stress and Health Data
 
 The purpose of the presentation is the fulfillment of the requirements for a so called Pitch Presentation on the Life Stress and Illness Data Collection application. 
 
