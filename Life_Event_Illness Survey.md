@@ -3,45 +3,7 @@ The Life Event Survey Tool
 author:David A York
 date: January 31, 2016
 
-```{r echo=FALSE, warning=FALSE, message=FALSE}
-library(dplyr)
-library(ggplot2)
-library(zipcode)
-library(maps)
-# demo data file load
-demoData <<- read.csv("dataJan.21.2016.csv",colClasses=c("integer","character","character","character","factor", "integer"))
 
-factScore = c(rep(" ", length(demoData[,6])))
-for (i in seq(1:length(demoData$score))){
-  if (demoData[i,6] > 300) {
-    factScore[i] <- "high"
-  }else if(demoData[i,6] > 200){
-    factScore[i] <- "moderate"
-  }else{
-    factScore[i] <- "low"}
-}
-demoData <- mutate(demoData, riskGroup=as.factor(factScore))
-#aggregate data in 3 data columns
-df <- as.data.frame(cbind(as.character(demoData$cenTract),as.character(demoData$ageRange),as.character(demoData$score)),stringsAsFactors=FALSE)
-colnames(df) <- c("region", "ageRange", "value")
-df$value <- as.integer(df$value)
-# summarize to mean value per region (zip/cenTract)
-aggData <- summarise(group_by(df, region),  round(mean(value)))
-colnames(aggData) <- c("region", "value")
-data(zipcode)
-m1 <- merge(aggData, zipcode[,1:5], by.x = "region", by.y = "zip")
-
-# create a map plot score by zip
-library(maps)
-data(usa)
-mapData <- map_data("usa")
-g = qplot(data = map_data("state"))
-g = g + borders("state", size = 0.5)
-g = g + geom_point(data=m1, aes(x=longitude, y=latitude, colour=value))
-g = g + theme_bw() + scale_x_continuous(limits = c(-125,-66), breaks = NULL)
-g = g + scale_y_continuous(limits = c(25,50), breaks = NULL)
-
-```
 
 
 
@@ -66,9 +28,14 @@ The Tool
   - data can only be sent to a preselected addresses
 
 **Database Excerpt**
-```{r echo=FALSE, warning=FALSE, message=FALSE}
-knitr::kable(demoData[c(1:5),c(2:6)], col.names=c("Date","email","Tract","Age Group","Score"))
-```
+
+|Date       |email                                       |Tract |Age Group | Score|
+|:----------|:-------------------------------------------|:-----|:---------|-----:|
+|10/17/2016 |libero.et.tristique@quisdiamluctus.net      |40146 |30        |   256|
+|2/12/2015  |dui.nec@augue.org                           |17223 |17        |   184|
+|6/20/2016  |molestie@molestietellusAenean.com           |49443 |60        |   187|
+|11/13/2015 |lectus@pharetrautpharetra.edu               |39935 |17        |   123|
+|7/7/2015   |lacus.Etiam@Aliquamvulputateullamcorper.net |37487 |60        |    49|
 
 
 Simple Reports - Tables
@@ -77,9 +44,16 @@ Simple Reports - Tables
 **Summary**
 <br>
 <center>
-```{r echo=FALSE, warning=FALSE, message=FALSE}
-knitr::kable(summary(demoData[,c(5,6,7)]))
-```
+
+|   |ageRange |    score     |   riskGroup |
+|:--|:--------|:-------------|:------------|
+|   |17:129   |Min.   :  1.0 |high    : 26 |
+|   |20:120   |1st Qu.: 98.0 |low     :580 |
+|   |30:101   |Median :148.0 |moderate:194 |
+|   |40:118   |Mean   :152.6 |NA           |
+|   |50:102   |3rd Qu.:205.2 |NA           |
+|   |60:121   |Max.   :417.0 |NA           |
+|   |65:109   |NA            |NA           |
 
 
 Simple Reports - Plots
@@ -89,9 +63,7 @@ Simple Reports - Plots
 <center>
 Map Mean Score by Census Tract
 <br>
-```{r echo=FALSE, warning=FALSE, message=FALSE}
-plot(g)
-```
+![plot of chunk unnamed-chunk-4](Life_Event_Illness Survey-figure/unnamed-chunk-4-1.png) 
 </center>
 
 The Payoff
