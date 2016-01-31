@@ -83,11 +83,11 @@ Data are monitored and cleaned and analyzed in stages.
 - Age related and geogrphic trends of illness development in relation to stress is studied.
 
 ##Ongoing Conclusions
-The Part 1 project nears completion
+The Part 1 project application is completion at: [Phase one Application](https://medmatixrshiny.shinyapps.io/DataProdProj/)
 
-The Part 1 presentation is complete
+The Part 1 presentation is complete at: [Presentation](https://medmatixrshiny.shinyapps.io/DataProdProj/)
 
-The Part 2 implementation plan is formulated and proceeding as expected.
+The Part 2 implementation plan has been formulated and proceeding as expected.
 
 ###Short-term
 
